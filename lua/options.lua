@@ -21,6 +21,7 @@ vim.opt.undofile = true
 vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.autoread = true
+vim.opt.guicursor = "a:block"
 
 -- Diagnostics
 vim.diagnostic.config({

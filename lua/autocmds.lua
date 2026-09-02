@@ -1,7 +1,7 @@
 vim.api.nvim_create_autocmd("BufWritePre", {
 	callback = function()
 		local ft = vim.bo.filetype
-		if ft == "rust" or ft == "lua" or ft == "wgsl" then
+		if ft == "rust" or ft == "lua" or ft == "wgsl" or ft == "c" or ft == "zig" then
 			vim.lsp.buf.format({ async = false })
 		end
 	end,
