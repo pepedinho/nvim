@@ -65,7 +65,7 @@ return {
 					zls = {
 						enable_autofix = true,
 						enable_snippets = true,
-						enable_build_on_save = true,
+						enable_build_on_save = false,
 						warn_style = true,
 					},
 				},

@@ -25,7 +25,7 @@ vim.opt.guicursor = "a:block"
 
 -- Diagnostics
 vim.diagnostic.config({
-	virtual_text = true,
+	virtual_text = false,
 	signs = true,
 	underline = true,
 	update_in_insert = false,
