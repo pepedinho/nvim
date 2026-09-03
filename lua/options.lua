@@ -31,5 +31,16 @@ vim.diagnostic.config({
 	update_in_insert = false,
 })
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking text",
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank({
+			higroup = "IncSearch", -- Highlight group used for the effect
+			timeout = 100, -- Duration in milliseconds
+		})
+	end,
+})
+
 -- inlay hints
 vim.lsp.inlay_hint.enable(true)
