@@ -31,4 +31,23 @@ return {
 			require("ibl").setup()
 		end,
 	},
+	{
+		"rcarriga/nvim-notify",
+		opts = {
+			stages = "slide",
+			timeout = 3000,
+			render = "wrapped-compact", -- Borderless layout for compact toasts
+			max_height = function()
+				return math.floor(vim.o.lines * 0.75)
+			end,
+			max_width = function()
+				return math.floor(vim.o.columns * 0.45)
+			end,
+		},
+		config = function(_, opts)
+			local notify = require("notify")
+			notify.setup(opts)
+			vim.notify = notify
+		end,
+	},
 }

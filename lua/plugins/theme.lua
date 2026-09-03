@@ -25,6 +25,28 @@ return {
 					CmpItemAbbrMatchFuzzy = { fg = theme.diag.warning, bg = "NONE", bold = true },
 					CmpItemKind = { fg = theme.syn.fun, bg = "NONE" },
 					CmpItemMenu = { fg = theme.syn.comment, bg = "NONE" },
+
+					NotifyBACKGROUND = { bg = theme.ui.bg_p1 },
+
+					NotifyERRORIcon = { fg = "#FF557F" },
+					NotifyERRORTitle = { fg = "#FF557F", bold = true },
+					NotifyERRORBody = { fg = theme.ui.fg },
+
+					NotifyWARNIcon = { fg = "#FFB86C" },
+					NotifyWARNTitle = { fg = "#FFB86C", bold = true },
+					NotifyWARNBody = { fg = theme.ui.fg },
+
+					NotifyINFOIcon = { fg = "#8BE9FD" },
+					NotifyINFOTitle = { fg = "#8BE9FD", bold = true },
+					NotifyINFOBody = { fg = theme.ui.fg },
+
+					NotifyDEBUGIcon = { fg = "#BD93F9" },
+					NotifyDEBUGTitle = { fg = "#BD93F9", bold = true },
+					NotifyDEBUGBody = { fg = theme.ui.fg },
+
+					NotifyTRACEIcon = { fg = "#BD93F9" },
+					NotifyTRACETitle = { fg = "#BD93F9", bold = true },
+					NotifyTRACEBody = { fg = theme.ui.fg },
 				}
 			end,
 		})
