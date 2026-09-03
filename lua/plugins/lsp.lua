@@ -16,8 +16,10 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = { "hrsh7th/cmp-nvim-lsp" },
 		config = function()
 			-- Inlay hints sur chaque buffer LSP
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 			vim.api.nvim_create_autocmd("LspAttach", {
 				callback = function(args)
 					local client = vim.lsp.get_client_by_id(args.data.client_id)
@@ -28,6 +30,7 @@ return {
 			})
 
 			vim.lsp.config("rust_analyzer", {
+				capabilities = capabilities,
 				settings = {
 					["rust-analyzer"] = {
 						checkOnSave = false,
@@ -44,13 +47,32 @@ return {
 					},
 				},
 			})
-			vim.lsp.config("lua_ls", {})
+			vim.lsp.config("lua_ls", {
+				capabilities = capabilities,
+			})
 			vim.lsp.config("bacon_ls", {
+				capabilities = capabilities,
 				init_options = {
 					updateOnSave = true,
 					updateOnSaveWaitMillis = 1000,
 					updateOnChange = false,
 				},
+			})
+
+			vim.lsp.config("zls", {
+				capabilities = capabilities,
+				settings = {
+					zls = {
+						enable_autofix = true,
+						enable_snippets = true,
+						enable_build_on_save = true,
+						warn_style = true,
+					},
+				},
+			})
+
+			vim.lsp.config("wgsl_analyzer", {
+				capabilities = capabilities,
 			})
 			vim.lsp.enable("rust_analyzer")
 			vim.lsp.enable("lua_ls")

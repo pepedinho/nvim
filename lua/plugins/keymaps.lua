@@ -28,6 +28,8 @@ return {
 		},
 		spec = {
 			{ "<leader>e", desc = "Explorer (Oil)", icon = "󰙅 " },
+			{ "<leader>s", group = "search", icon = "󰍉 " },
+			{ "<leader>sg", desc = "Grep project text", icon = "󰈞 " },
 			{ "<leader>r", group = "run/cargo", icon = "󱘗 " },
 			{ "<leader>rb", desc = "Cargo build", icon = " " },
 			{ "<leader>rr", desc = "Cargo run", icon = "󰐊 " },

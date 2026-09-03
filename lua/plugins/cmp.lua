@@ -49,6 +49,9 @@ return {
 
 		-- Code completion setup
 		cmp.setup({
+			completion = {
+				completeopt = "menu,menuone,noinsert",
+			},
 			window = {
 				completion = borderless_window,
 				documentation = borderless_window,
@@ -66,6 +69,11 @@ return {
 					return vim_item
 				end,
 			},
+			matching = {
+				disallow_fuzzy_matching = false,
+				disallow_fullfuzzy_matching = false,
+				disallow_partial_fuzzy_matching = false,
+			},
 			mapping = cmp.mapping.preset.insert({
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
@@ -75,7 +83,7 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "buffer" },
+				{ name = "buffer", keyword_length = 3 },
 				{ name = "path" },
 			}),
 		})
