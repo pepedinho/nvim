@@ -22,6 +22,7 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.autoread = true
 vim.opt.guicursor = "a:block"
+vim.opt.termguicolors = true
 
 -- Diagnostics
 vim.diagnostic.config({

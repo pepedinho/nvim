@@ -74,7 +74,9 @@ return {
 			vim.lsp.config("wgsl_analyzer", {
 				capabilities = capabilities,
 			})
-			vim.lsp.enable("rust_analyzer")
+			vim.lsp.enable("rust_analyzer", {
+				capabilities = capabilities,
+			})
 			vim.lsp.enable("lua_ls")
 			vim.lsp.enable("wgsl_analyzer")
 			vim.lsp.enable("bacon_ls")

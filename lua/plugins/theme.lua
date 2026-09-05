@@ -1,55 +1,66 @@
 return {
-	"rebelot/kanagawa.nvim",
+	"embark-theme/vim",
+	name = "embark",
 	priority = 1000,
 	lazy = false,
 	config = function()
-		require("kanagawa").setup({
-			theme = "wave",
-			overrides = function(colors)
-				local theme = colors.theme
-				return {
-					-- Uniform popup menu background (eliminates padding color contrast)
-					Pmenu = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
-					PmenuSel = { fg = "NONE", bg = theme.ui.bg_p2, bold = true },
-					PmenuKind = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
-					PmenuExtra = { fg = theme.ui.shade0, bg = theme.ui.bg_p1 },
-					PmenuSbar = { bg = theme.ui.bg_p1 },
-					PmenuThumb = { bg = theme.ui.bg_p1 },
-					NormalFloat = { fg = theme.ui.fg, bg = theme.ui.bg_p1 },
-					FloatBorder = { fg = theme.ui.bg_p1, bg = theme.ui.bg_p1 },
+		-- Activate Embark colorscheme
+		vim.cmd("colorscheme embark")
 
-					-- Force CMP item highlights to have transparent background to inherit Pmenu cleanly
-					CmpItemAbbr = { fg = theme.ui.fg, bg = "NONE" },
-					CmpItemAbbrDeprecated = { fg = theme.syn.comment, bg = "NONE", strikethrough = true },
-					CmpItemAbbrMatch = { fg = theme.diag.warning, bg = "NONE", bold = true },
-					CmpItemAbbrMatchFuzzy = { fg = theme.diag.warning, bg = "NONE", bold = true },
-					CmpItemKind = { fg = theme.syn.fun, bg = "NONE" },
-					CmpItemMenu = { fg = theme.syn.comment, bg = "NONE" },
+		-- Palette highlights matching Embark theme
+		local bg_float = "#2d2b45"
+		local bg_sel = "#3e3b5e"
+		local fg = "#cbe3e7"
+		local comment = "#8a889d"
 
-					NotifyBACKGROUND = { bg = theme.ui.bg_p1 },
+		local err = "#f02e65"
+		local warn = "#f2a174"
+		local info = "#63f2f1"
+		local hint = "#a682ff"
 
-					NotifyERRORIcon = { fg = "#FF557F" },
-					NotifyERRORTitle = { fg = "#FF557F", bold = true },
-					NotifyERRORBody = { fg = theme.ui.fg },
+		local hl = vim.api.nvim_set_hl
 
-					NotifyWARNIcon = { fg = "#FFB86C" },
-					NotifyWARNTitle = { fg = "#FFB86C", bold = true },
-					NotifyWARNBody = { fg = theme.ui.fg },
+		-- 1. Borderless Popup Menu (Pmenu)
+		hl(0, "Pmenu", { fg = fg, bg = bg_float })
+		hl(0, "PmenuSel", { fg = "NONE", bg = bg_sel, bold = true })
+		hl(0, "PmenuKind", { fg = fg, bg = bg_float })
+		hl(0, "PmenuExtra", { fg = comment, bg = bg_float })
+		hl(0, "PmenuSbar", { bg = bg_float })
+		hl(0, "PmenuThumb", { bg = bg_sel })
 
-					NotifyINFOIcon = { fg = "#8BE9FD" },
-					NotifyINFOTitle = { fg = "#8BE9FD", bold = true },
-					NotifyINFOBody = { fg = theme.ui.fg },
+		-- 2. Borderless Floating Windows
+		hl(0, "NormalFloat", { fg = fg, bg = bg_float })
+		hl(0, "FloatBorder", { fg = bg_float, bg = bg_float })
 
-					NotifyDEBUGIcon = { fg = "#BD93F9" },
-					NotifyDEBUGTitle = { fg = "#BD93F9", bold = true },
-					NotifyDEBUGBody = { fg = theme.ui.fg },
+		-- 3. Transparent CMP Item Highlights
+		hl(0, "CmpItemAbbr", { fg = fg, bg = "NONE" })
+		hl(0, "CmpItemAbbrDeprecated", { fg = comment, bg = "NONE", strikethrough = true })
+		hl(0, "CmpItemAbbrMatch", { fg = warn, bg = "NONE", bold = true })
+		hl(0, "CmpItemAbbrMatchFuzzy", { fg = warn, bg = "NONE", bold = true })
+		hl(0, "CmpItemKind", { fg = info, bg = "NONE" })
+		hl(0, "CmpItemMenu", { fg = comment, bg = "NONE" })
 
-					NotifyTRACEIcon = { fg = "#BD93F9" },
-					NotifyTRACETitle = { fg = "#BD93F9", bold = true },
-					NotifyTRACEBody = { fg = theme.ui.fg },
-				}
-			end,
-		})
-		vim.cmd("colorscheme kanagawa")
+		-- 4. Borderless Notify Toast Overrides
+		hl(0, "NotifyBACKGROUND", { bg = bg_float })
+
+		hl(0, "NotifyERRORIcon", { fg = err })
+		hl(0, "NotifyERRORTitle", { fg = err, bold = true })
+		hl(0, "NotifyERRORBody", { fg = fg })
+
+		hl(0, "NotifyWARNIcon", { fg = warn })
+		hl(0, "NotifyWARNTitle", { fg = warn, bold = true })
+		hl(0, "NotifyWARNBody", { fg = fg })
+
+		hl(0, "NotifyINFOIcon", { fg = info })
+		hl(0, "NotifyINFOTitle", { fg = info, bold = true })
+		hl(0, "NotifyINFOBody", { fg = fg })
+
+		hl(0, "NotifyDEBUGIcon", { fg = hint })
+		hl(0, "NotifyDEBUGTitle", { fg = hint, bold = true })
+		hl(0, "NotifyDEBUGBody", { fg = fg })
+
+		hl(0, "NotifyTRACEIcon", { fg = hint })
+		hl(0, "NotifyTRACETitle", { fg = hint, bold = true })
+		hl(0, "NotifyTRACEBody", { fg = fg })
 	end,
 }

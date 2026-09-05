@@ -2,7 +2,19 @@ return {
 	{
 		"karb94/neoscroll.nvim",
 		config = function()
-			require("neoscroll").setup()
+			local neoscroll = require("neoscroll")
+
+			neoscroll.setup({
+				mappings = {},
+			})
+
+			vim.keymap.set({ "n", "v", "x" }, "<S-Up>", function()
+				neoscroll.scroll(-0.5, { move_cursor = true, duration = 250 })
+			end, { desc = "Scroll up" })
+
+			vim.keymap.set({ "n", "v", "x" }, "<S-Down>", function()
+				neoscroll.scroll(0.5, { move_cursor = true, duration = 250 })
+			end, { desc = "Scroll down" })
 		end,
 	},
 	{
